@@ -1,10 +1,9 @@
 package org.springframework.samples.petclinic.appointment;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.samples.petclinic.model.TestDTO;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface AppointRepository extends MongoRepository<AppointmentModel,String> {
+import org.springframework.data.repository.Repository;
 
-//	void save(AppointmentModel appointmentModel);
+
+public interface AppointRepository extends Repository<AppointmentEntity,String> {
+
+	void save(AppointmentEntity appointmentEntity);
 }

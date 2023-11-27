@@ -50,3 +50,11 @@ CREATE TABLE IF NOT EXISTS visits (
   description TEXT
 );
 CREATE INDEX ON visits (pet_id);
+
+CREATE TABLE IF NOT EXISTS appointments (
+  id          TEXT PRIMARY KEY,
+  owner_id    INT REFERENCES owners (id),
+  pet_id      INT REFERENCES pets (id),
+  appointmentDate DATE,
+  createTime  DATE
+)
