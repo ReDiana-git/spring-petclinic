@@ -40,8 +40,13 @@ public class AppointmentEntity implements Serializable {
 	public LocalDateTime getAppointmentDate() {
 		return appointmentDate;
 	}
+	public AppointmentEntity(AppointmentEntity appointmentEntity){
+		this.appointmentDate = appointmentEntity.getAppointmentDate();
+		this.id = appointmentEntity.getId();
+		this.ownerId = appointmentEntity.getOwnerId();
+		this.petId = appointmentEntity.getPetId();
+	}
 	public AppointmentEntity(){
 
 	}
-
 }
