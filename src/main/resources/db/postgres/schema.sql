@@ -59,4 +59,11 @@ CREATE TABLE IF NOT EXISTS appointments (
   createTime  DATE
 );
 
-
+CREATE TABLE IF NOT EXISTS consultaion (
+  id          TEXT PRIMARY KEY,
+  owner_id    INT REFERENCES owners (id),
+  pet_id      INT REFERENCES pets (id),
+  appointmentDate DATE,
+  createTime  DATE,
+  price       INT
+);
