@@ -9,7 +9,7 @@ import org.springframework.samples.petclinic.model.AppointmentState;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "appointmentIndex")
+@Table(name = "appointmentindex")
 public class AppointmentIndex implements Serializable {
 
 	@Id
@@ -54,6 +54,7 @@ public class AppointmentIndex implements Serializable {
 		this.id = appointmentEntity.getId();
 		this.ownerId = appointmentEntity.getOwnerId();
 		this.petId = appointmentEntity.getPetId();
+		this.State = "init";
 	}
 	public AppointmentIndex(){
 

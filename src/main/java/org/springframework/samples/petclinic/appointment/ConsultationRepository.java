@@ -14,4 +14,7 @@ public interface ConsultationRepository extends Repository<ConsultaionEntity,Str
 	@Query("SELECT consultaionEntity FROM ConsultaionEntity consultaionEntity WHERE consultaionEntity.ownerId = :ownerId")
 	@Transactional(readOnly = true)
 	List<ConsultaionEntity> findByOwnerId(@Param("ownerId") Integer ownerId);
+	@Query("SELECT consultaionEntity FROM ConsultaionEntity consultaionEntity WHERE consultaionEntity.id = :id")
+	@Transactional(readOnly = true)
+	ConsultaionEntity findById(@Param("id") String id);
 }

@@ -13,4 +13,7 @@ public interface AppointmentIndexRepository extends Repository<AppointmentIndex,
 	@Query("SELECT AppointmentIndex FROM AppointmentIndex appointmentIndex WHERE appointmentIndex.id = :id")
 	@Transactional(readOnly = true)
 	List<AppointmentIndex> findById(@Param("id") String id);
+	@Query("SELECT appointmentIndex FROM AppointmentIndex appointmentIndex WHERE appointmentIndex.ownerId = :ownerId")
+	@Transactional(readOnly = true)
+	List<AppointmentIndex> findByOwnerId(@Param("ownerId") Integer ownerId);
 }

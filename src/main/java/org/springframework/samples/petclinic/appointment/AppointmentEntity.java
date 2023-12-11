@@ -7,7 +7,9 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name = "appointments")
+@DiscriminatorColumn
 public class AppointmentEntity implements Serializable {
 
 	@Id
