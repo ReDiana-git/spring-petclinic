@@ -67,3 +67,4 @@ CREATE TABLE IF NOT EXISTS consultaion (
   createTime  DATE,
   price       INT
 );
+

@@ -21,6 +21,10 @@ public interface AppointRepository extends Repository<AppointmentEntity,String> 
 	@Transactional(readOnly = true)
 	AppointmentEntity findById(@Param("id") String id);
 
+	@Query("SELECT appointmentEntity FROM AppointmentEntity appointmentEntity WHERE appointmentEntity.ownerId = :ownerId")
+	@Transactional(readOnly = true)
+	List<AppointmentEntity> findByOwnerId(@Param("ownerId") Integer ownerId);
+
 	@Modifying
 	@Transactional
 	@Query("DELETE FROM AppointmentEntity appointmentEntity WHERE appointmentEntity.petId = :petId")
