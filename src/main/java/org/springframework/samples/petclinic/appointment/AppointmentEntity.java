@@ -1,24 +1,19 @@
 package org.springframework.samples.petclinic.appointment;
 
 import jakarta.persistence.*;
+import org.springframework.samples.petclinic.medicalRecord.MedicalRecord;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name = "appointments")
-@DiscriminatorColumn
 public class AppointmentEntity implements Serializable {
 
 	@Id
 	@Column(name = "id")
-	private String id = UUID.randomUUID().toString();;
-	@Column(name = "owner_id")
-	private Integer ownerId;
-	@Column(name = "pet_id")
-	private Integer petId;
+	private String id ;
 	@Column(name = "appointmentdate")
 	private LocalDateTime appointmentDate;
 	public LocalDateTime getCreateTime() {
@@ -26,27 +21,15 @@ public class AppointmentEntity implements Serializable {
 	}
 	@Column(name = "createtime")
 	private LocalDateTime createTime = LocalDateTime.now();
-
 	public String getId() {
 		return id;
 	}
-
-	public Integer getOwnerId() {
-		return ownerId;
-	}
-
-	public Integer getPetId() {
-		return petId;
-	}
-
 	public LocalDateTime getAppointmentDate() {
 		return appointmentDate;
 	}
-	public AppointmentEntity(AppointmentEntity appointmentEntity){
-		this.appointmentDate = appointmentEntity.getAppointmentDate();
-		this.id = appointmentEntity.getId();
-		this.ownerId = appointmentEntity.getOwnerId();
-		this.petId = appointmentEntity.getPetId();
+	public AppointmentEntity(MedicalRecord medicalRecord, CreateAppointmentDTO createAppointmentDTO){
+		this.id = medicalRecord.getAppointmentId();
+		this.appointmentDate = createAppointmentDTO.getAppointmentDate();
 	}
 	public AppointmentEntity(){
 
