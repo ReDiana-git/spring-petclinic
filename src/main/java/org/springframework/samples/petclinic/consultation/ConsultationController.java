@@ -17,10 +17,13 @@ public class ConsultationController {
 	MedicalRecordRepository medicalRecordRepository;
 	@Autowired
 	ConsultationRepository consultationRepository;
+	@Autowired
 	ConsultationService consultationService = new ConsultationService();
-	@PostMapping("appointment/checkConsultation")
+	@PostMapping("/appointment/checkConsultation")
 	public ResponseEntity<?> checkConsultation(@RequestBody String recordId){
+		System.out.println(recordId);
 		ConsultationDTO consultationDTO = consultationService.checkConsultaion(recordId);
 		return ResponseEntity.status(HttpStatus.OK).body(consultationDTO);
+//		return ResponseEntity.status(HttpStatus.OK).build();
 	}
 }
