@@ -1,6 +1,7 @@
 package org.springframework.samples.petclinic.appointment;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.consultation.CheckConsultationDTO;
 import org.springframework.samples.petclinic.consultation.ConsultationEntity;
 import org.springframework.samples.petclinic.consultation.ConsultationRepository;
 import org.springframework.samples.petclinic.medicalRecord.MedicalRecord;
@@ -47,10 +48,12 @@ public class AppointmentService {
 		for(MedicalRecord record:MedicalRecords){
 			switch (record.getState()){
 				case INIT :
-					CheckAppointmentDTO dto = new CheckAppointmentDTO(appointmentRepository.findById(record.getAppointmentId()),record);
-					records.add(dto);
+					CheckAppointmentDTO checkAppointmentDTO = new CheckAppointmentDTO(appointmentRepository.findById(record.getAppointmentId()),record);
+					records.add(checkAppointmentDTO);
 					break;
 				case CONSULTAION:
+					CheckConsultationDTO checkConsultationDTO = new CheckConsultationDTO(consultationRepository.findById(record.getConsultaionId()), record, medicineRepositroy.findById(record.getMedicineId()));
+					records.add(checkConsultationDTO);
 					break;
 				case PAYMENT:
 					break;

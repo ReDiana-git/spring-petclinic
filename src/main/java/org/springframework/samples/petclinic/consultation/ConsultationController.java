@@ -28,7 +28,7 @@ public class ConsultationController {
 
 	@PostMapping("/appoint/updateConsultation")
 	public ResponseEntity<?> updateConsultation(@RequestBody UpdateConsultationDTO updateConsultationDTO){
-		UpdateConsultationDTO returnDTO = consultationService.updateConsultation(updateConsultationDTO);
-		return ResponseEntity.status(HttpStatus.OK).body(returnDTO);
+		consultationService.updateConsultation(updateConsultationDTO);
+		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 }

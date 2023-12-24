@@ -23,11 +23,11 @@ public class ConsultationService {
 		return new CheckConsultationDTO(consultation, record, medicine);
 	}
 
-	public UpdateConsultationDTO updateConsultation(UpdateConsultationDTO updateConsultationDTO) {
+	public void updateConsultation(UpdateConsultationDTO updateConsultationDTO) {
 		MedicalRecord record = medicalRecordRepository.findById(updateConsultationDTO.getRecordId());
-		ConsultationEntity consultation = consultationRepository.findById(record.getConsultaionId());
 		MedicineEntity medicine = medicineRepositroy.findById(record.getMedicineId());
+		medicine.setMedicines(updateConsultationDTO.getMedicines());
+		ConsultationEntity consultation = consultationRepository.findById(record.getConsultaionId());
 		consultation.setPrice((int)(Math.random()*1000) + 1);
-		medicine.setMedicines(updateConsultationDTO.getMedicines);
 	}
 }
