@@ -6,7 +6,7 @@ import org.springframework.samples.petclinic.medicalRecord.MedicalRecord;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "consultaion")
+@Table(name = "consultation")
 public class ConsultationEntity implements Serializable {
 
 	public ConsultationEntity() {

@@ -1,7 +1,6 @@
 package org.springframework.samples.petclinic.consultation;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.petclinic.appointment.AppointmentEntity;
 import org.springframework.samples.petclinic.medicalRecord.MedicalRecord;
 import org.springframework.samples.petclinic.medicalRecord.MedicalRecordRepository;
 import org.springframework.samples.petclinic.medicine.MedicineEntity;
@@ -17,12 +16,18 @@ public class ConsultationService {
 	@Autowired
 	MedicineRepositroy medicineRepositroy;
 
-	public ConsultationDTO checkConsultaion(String recordId) {
+	public CheckConsultationDTO checkConsultation(String recordId) {
 		MedicalRecord record = medicalRecordRepository.findById(recordId);
-		System.out.println(record.getConsultaionId());
 		ConsultationEntity consultation = consultationRepository.findById(record.getConsultaionId());
-		System.out.println(consultation.getPrice());
 		MedicineEntity medicine = medicineRepositroy.findById(record.getMedicineId());
-		return new ConsultationDTO(consultation, record, medicine);
+		return new CheckConsultationDTO(consultation, record, medicine);
+	}
+
+	public UpdateConsultationDTO updateConsultation(UpdateConsultationDTO updateConsultationDTO) {
+		MedicalRecord record = medicalRecordRepository.findById(updateConsultationDTO.getRecordId());
+		ConsultationEntity consultation = consultationRepository.findById(record.getConsultaionId());
+		MedicineEntity medicine = medicineRepositroy.findById(record.getMedicineId());
+		consultation.setPrice((int)(Math.random()*1000) + 1);
+		medicine.setMedicines(updateConsultationDTO.getMedicines);
 	}
 }

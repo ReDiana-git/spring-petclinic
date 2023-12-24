@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.consultation;
 
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +22,13 @@ public class ConsultationController {
 	ConsultationService consultationService = new ConsultationService();
 	@PostMapping("/appointment/checkConsultation")
 	public ResponseEntity<?> checkConsultation(@RequestBody String recordId){
-		System.out.println(recordId);
-		ConsultationDTO consultationDTO = consultationService.checkConsultaion(recordId);
-		return ResponseEntity.status(HttpStatus.OK).body(consultationDTO);
-//		return ResponseEntity.status(HttpStatus.OK).build();
+		CheckConsultationDTO checkConsultationDTO = consultationService.checkConsultation(recordId);
+		return ResponseEntity.status(HttpStatus.OK).body(new Gson().toJson(checkConsultationDTO));
+	}
+
+	@PostMapping("/appoint/updateConsultation")
+	public ResponseEntity<?> updateConsultation(@RequestBody UpdateConsultationDTO updateConsultationDTO){
+		UpdateConsultationDTO returnDTO = consultationService.updateConsultation(updateConsultationDTO);
+		return ResponseEntity.status(HttpStatus.OK).body(returnDTO);
 	}
 }
