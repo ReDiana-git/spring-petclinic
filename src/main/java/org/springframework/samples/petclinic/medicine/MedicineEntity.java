@@ -21,7 +21,7 @@ public class MedicineEntity implements Serializable {
 	public String getMedicines(){
 		return this.medicines;
 	}
-
+	@Column(name = "medicines")
 	private String medicines;
 
 	public MedicineEntity() {

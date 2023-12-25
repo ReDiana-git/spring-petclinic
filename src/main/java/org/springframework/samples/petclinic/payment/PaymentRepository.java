@@ -11,5 +11,9 @@ public interface PaymentRepository extends Repository<PaymentEntity,String> {
 
 	@Modifying
 	@Query("UPDATE PaymentEntity paymentEntity SET paymentEntity.paymentStatus = :paymentStatus WHERE paymentEntity.id = :paymentId")
-	PaymentEntity updatePaymentStatus(@Param("paymentId") String paymentId, @Param("paymentStatus") boolean paymentStatus);
+	void updatePaymentStatus(@Param("paymentId") String paymentId, @Param("paymentStatus") boolean paymentStatus);
+
+	@Modifying
+	@Query("UPDATE PaymentEntity  paymentEntity SET paymentEntity.price = :price WHERE paymentEntity.id = :paymentId")
+	void updatePayment(@Param("paymentId") String paymentId, @Param("price") Integer price);
 }

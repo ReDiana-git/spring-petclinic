@@ -48,9 +48,10 @@ public class AppointmentService {
 		List<MedicalRecord> MedicalRecords = medicalRecordRepository.findByOwnerId(owner_id);
 		List<BaseRecord> records = new ArrayList<>();
 		for(MedicalRecord record:MedicalRecords){
+			System.out.println(record.getAppointmentId());
 			switch (record.getState()){
 				case INIT :
-					CheckAppointmentDTO checkAppointmentDTO = new CheckAppointmentDTO(appointmentRepository.findById(record.getAppointmentId()),record);
+					CheckAppointmentDTO checkAppointmentDTO = new CheckAppointmentDTO(appointmentRepository.findById(record.getAppointmentId()), record);
 					records.add(checkAppointmentDTO);
 					break;
 				case CONSULTAION:

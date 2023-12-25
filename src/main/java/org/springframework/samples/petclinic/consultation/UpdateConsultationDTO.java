@@ -8,7 +8,10 @@ public class UpdateConsultationDTO {
     public String getRecordId() {
 		return RecordId;
 	}
-
+	public String getSymptom(){
+		return symptom;
+	}
 	private String RecordId;
 	private String medicines;
+	private String symptom;
 }
