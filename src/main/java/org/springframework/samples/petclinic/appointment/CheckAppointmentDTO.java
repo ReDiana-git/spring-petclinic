@@ -1,6 +1,7 @@
 package org.springframework.samples.petclinic.appointment;
 
 import org.springframework.samples.petclinic.medicalRecord.MedicalRecord;
+import org.springframework.samples.petclinic.model.AppointmentState;
 import org.springframework.samples.petclinic.model.BaseRecord;
 
 import java.io.Serializable;
@@ -26,8 +27,9 @@ public class CheckAppointmentDTO extends BaseRecord {
 	public CheckAppointmentDTO(AppointmentEntity appointmentEntity, MedicalRecord record){
 		this.recordId = record.getId();
 		this.appointmentId = record.getAppointmentId();
-		super.ownerId = record.getOwnerId();
-		super.petId = record.getPetId();
 		this.appointmentDate = appointmentEntity.getAppointmentDate();
+		super.setPetId(record.getPetId());
+		super.setOwnerId(record.getOwnerId());
+		super.setState(record.getState());
 	}
 }

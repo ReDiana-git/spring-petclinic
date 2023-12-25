@@ -6,9 +6,11 @@ import org.springframework.samples.petclinic.consultation.ConsultationEntity;
 import org.springframework.samples.petclinic.consultation.ConsultationRepository;
 import org.springframework.samples.petclinic.medicalRecord.MedicalRecord;
 import org.springframework.samples.petclinic.medicalRecord.MedicalRecordRepository;
+import org.springframework.samples.petclinic.medicine.CheckMedicineDTO;
 import org.springframework.samples.petclinic.medicine.MedicineEntity;
 import org.springframework.samples.petclinic.medicine.MedicineRepositroy;
 import org.springframework.samples.petclinic.model.BaseRecord;
+import org.springframework.samples.petclinic.payment.CheckPaymentDTO;
 import org.springframework.samples.petclinic.payment.PaymentEntity;
 import org.springframework.samples.petclinic.payment.PaymentRepository;
 import org.springframework.stereotype.Service;
@@ -56,8 +58,12 @@ public class AppointmentService {
 					records.add(checkConsultationDTO);
 					break;
 				case PAYMENT:
+					CheckPaymentDTO checkPaymentDTO = new CheckPaymentDTO(paymentRepository.findById(record.getPaymentId()), record);
+					records.add(checkPaymentDTO);
 					break;
 				case MEDICINE:
+					CheckMedicineDTO checkMedicineDTO = new CheckMedicineDTO(paymentRepository.findById(record.getPaymentId()), record);
+					records.add(checkMedicineDTO);
 					break;
 			}
 		}

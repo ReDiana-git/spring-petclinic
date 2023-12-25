@@ -5,12 +5,15 @@ import org.springframework.samples.petclinic.medicine.MedicineEntity;
 import org.springframework.samples.petclinic.model.BaseRecord;
 
 public class CheckConsultationDTO extends BaseRecord {
-	// 客戶為看病狀況
-	// 會回覆客戶
-	private Integer price;
+	// 客戶查看病狀態
+	// 會回覆客戶此病歷的金額
+	private String symptom;
+	private String medicines;
 	public CheckConsultationDTO(ConsultationEntity consultationEntity, MedicalRecord record, MedicineEntity medicineEntity){
-		super.ownerId = record.getOwnerId();
-		super.petId = record.getPetId();
-		this.price = consultationEntity.getPrice();
+		super.setOwnerId(record.getOwnerId());
+		super.setPetId(record.getPetId());
+		super.setState(record.getState());
+		this.symptom = consultationEntity.getSymptom();
+		this.medicines = medicineEntity.getMedicines();
 	}
 }

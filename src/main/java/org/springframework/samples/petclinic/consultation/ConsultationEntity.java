@@ -12,12 +12,12 @@ public class ConsultationEntity implements Serializable {
 	public ConsultationEntity() {
 	}
 
-	public Integer getPrice() {
-		return price;
+	public String  getSymptom() {
+		return symptom;
 	}
 
-	public void setPrice(Integer price) {
-		this.price = price;
+	public void setSymptom(String symptom) {
+		this.symptom = symptom;
 	}
 
 	public String getId() {
@@ -27,8 +27,8 @@ public class ConsultationEntity implements Serializable {
 	@Id
 	@Column(name = "id")
 	private String id;
-	@Column(name = "price")
-	private Integer price;
+	@Column(name = "symptom")
+	private String symptom;
 
 	public ConsultationEntity(MedicalRecord medicalRecord){
 		this.id = medicalRecord.getConsultaionId();

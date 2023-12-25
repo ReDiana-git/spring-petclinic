@@ -28,6 +28,6 @@ public class ConsultationService {
 		MedicineEntity medicine = medicineRepositroy.findById(record.getMedicineId());
 		medicine.setMedicines(updateConsultationDTO.getMedicines());
 		ConsultationEntity consultation = consultationRepository.findById(record.getConsultaionId());
-		consultation.setPrice((int)(Math.random()*1000) + 1);
+//		consultation.setSymptom((int)(Math.random()*1000) + 1);
 	}
 }

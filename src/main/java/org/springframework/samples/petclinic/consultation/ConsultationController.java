@@ -20,12 +20,15 @@ public class ConsultationController {
 	ConsultationRepository consultationRepository;
 	@Autowired
 	ConsultationService consultationService = new ConsultationService();
+
+	//給醫生查看病歷
 	@PostMapping("/appointment/checkConsultation")
 	public ResponseEntity<?> checkConsultation(@RequestBody String recordId){
 		CheckConsultationDTO checkConsultationDTO = consultationService.checkConsultation(recordId);
 		return ResponseEntity.status(HttpStatus.OK).body(new Gson().toJson(checkConsultationDTO));
 	}
 
+	//給醫生更新病歷
 	@PostMapping("/appoint/updateConsultation")
 	public ResponseEntity<?> updateConsultation(@RequestBody UpdateConsultationDTO updateConsultationDTO){
 		consultationService.updateConsultation(updateConsultationDTO);
